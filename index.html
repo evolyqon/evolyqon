@@ -13,10 +13,10 @@
             margin: 0;
             min-height: 100vh;
             background:
-                radial-gradient(circle at 50% 18%, rgba(0, 120, 255, 0.18), transparent 30%),
-                radial-gradient(circle at 50% 45%, rgba(120, 70, 255, 0.12), transparent 35%),
-                #000000;
-            color: white;
+                radial-gradient(circle at 50% 18%, rgba(0, 115, 255, 0.18), transparent 28%),
+                radial-gradient(circle at 50% 55%, rgba(105, 70, 255, 0.10), transparent 32%),
+                linear-gradient(180deg, #020204 0%, #000000 55%, #020204 100%);
+            color: #ffffff;
             font-family: Arial, Helvetica, sans-serif;
             overflow-x: hidden;
         }
@@ -24,85 +24,158 @@
         .page {
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding: 48px 20px;
+            position: relative;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            width: 680px;
+            height: 680px;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle, rgba(0, 132, 255, 0.12), transparent 62%);
+            filter: blur(20px);
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1100px;
             text-align: center;
-            padding: 40px 20px;
         }
 
         .logo {
-            width: min(92vw, 900px);
+            width: min(92vw, 920px);
+            display: block;
+            margin: 0 auto;
+            filter:
+                drop-shadow(0 0 24px rgba(0, 132, 255, 0.32))
+                drop-shadow(0 0 55px rgba(105, 70, 255, 0.18));
+        }
+
+        .divider {
+            width: min(420px, 70vw);
+            height: 1px;
+            margin: 34px auto 26px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 160, 255, 0.55),
+                rgba(150, 95, 255, 0.45),
+                transparent
+            );
+            box-shadow: 0 0 18px rgba(0, 132, 255, 0.4);
+        }
+
+        .system-line {
+            color: rgba(255, 255, 255, 0.62);
+            font-size: clamp(0.72rem, 1.8vw, 0.9rem);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            line-height: 1.9;
             max-width: 900px;
-            filter: drop-shadow(0 0 30px rgba(0, 132, 255, 0.35));
-            margin-bottom: 35px;
+            margin: 0 auto;
         }
 
-        .description {
+        .system-line span {
+            color: #35aaff;
+            text-shadow: 0 0 16px rgba(0, 132, 255, 0.7);
+        }
+
+        .mission {
+            margin: 20px auto 0;
             max-width: 760px;
-            color: rgba(255,255,255,0.68);
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-top: 10px;
-            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.48);
+            font-size: clamp(0.88rem, 2vw, 1rem);
+            line-height: 1.8;
+            font-weight: 300;
         }
 
-        .buttons {
-            margin-top: 38px;
+        .actions {
+            margin-top: 34px;
             display: flex;
+            justify-content: center;
             gap: 16px;
             flex-wrap: wrap;
-            justify-content: center;
         }
 
         .btn {
+            position: relative;
             padding: 14px 30px;
             border-radius: 999px;
             text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 3px;
             text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            color: white;
+            overflow: hidden;
             transition: 0.3s ease;
         }
 
-        .primary {
-            background: linear-gradient(90deg, #168dff, #805cff);
-            color: white;
-            box-shadow: 0 0 25px rgba(0, 132, 255, 0.45);
+        .btn-primary {
+            background:
+                linear-gradient(90deg, rgba(0, 132, 255, 0.95), rgba(110, 75, 255, 0.92));
+            box-shadow:
+                0 0 22px rgba(0, 132, 255, 0.45),
+                inset 0 0 18px rgba(255, 255, 255, 0.15);
         }
 
-        .secondary {
-            border: 1px solid rgba(255,255,255,0.18);
-            color: white;
-            background: rgba(255,255,255,0.04);
+        .btn-secondary {
+            border: 1px solid rgba(90, 170, 255, 0.28);
+            background: rgba(255, 255, 255, 0.035);
+            box-shadow: inset 0 0 18px rgba(0, 132, 255, 0.08);
+            color: rgba(255,255,255,0.78);
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 35px rgba(0, 132, 255, 0.55);
+            box-shadow:
+                0 0 30px rgba(0, 132, 255, 0.58),
+                0 0 60px rgba(115, 70, 255, 0.25);
         }
 
         .footer {
-            position: fixed;
-            bottom: 24px;
-            color: rgba(255,255,255,0.35);
-            font-size: 12px;
-            letter-spacing: 3px;
+            position: absolute;
+            bottom: 26px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.28);
+            font-size: 11px;
+            letter-spacing: 4px;
             text-transform: uppercase;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
+            .page {
+                padding: 34px 18px;
+            }
+
             .logo {
                 width: 100%;
             }
 
-            .description {
-                font-size: 0.95rem;
+            .divider {
+                margin-top: 24px;
+            }
+
+            .system-line {
+                letter-spacing: 3px;
+            }
+
+            .mission {
+                max-width: 92%;
             }
 
             .footer {
                 position: static;
-                margin-top: 50px;
+                margin-top: 42px;
             }
         }
     </style>
@@ -110,23 +183,31 @@
 
 <body>
     <main class="page">
+        <section class="content">
 
-        <img src="logo.png" alt="Evolyqon Logo" class="logo">
+            <img src="logo.png" alt="Evolyqon Logo" class="logo">
 
-        <p class="description">
-            Building intelligent technology for the next era of human progress —
-            combining artificial intelligence, neural systems, and future-focused innovation.
-        </p>
+            <div class="divider"></div>
 
-        <div class="buttons">
-            <a href="mailto:hello@evolyqon.com" class="btn primary">Contact</a>
-            <a href="#" class="btn secondary">Coming Soon</a>
-        </div>
+            <div class="system-line">
+                <span>Neural AI</span> • Human Evolution • Future Technology
+            </div>
+
+            <p class="mission">
+                A future-focused intelligence platform designed to help people think, organize,
+                learn, and evolve through advanced artificial intelligence.
+            </p>
+
+            <div class="actions">
+                <a href="mailto:hello@evolyqon.com" class="btn btn-primary">Contact</a>
+                <a href="#" class="btn btn-secondary">Coming Soon</a>
+            </div>
+
+        </section>
 
         <div class="footer">
             © 2026 Evolyqon
         </div>
-
     </main>
 </body>
 </html>
