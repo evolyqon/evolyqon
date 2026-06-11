@@ -13,9 +13,9 @@
             margin: 0;
             min-height: 100vh;
             background:
-                radial-gradient(circle at 50% 20%, rgba(0, 132, 255, 0.22), transparent 28%),
-                radial-gradient(circle at 50% 45%, rgba(102, 62, 255, 0.16), transparent 35%),
-                linear-gradient(180deg, #020308 0%, #000000 100%);
+                radial-gradient(circle at 50% 18%, rgba(0, 120, 255, 0.18), transparent 30%),
+                radial-gradient(circle at 50% 45%, rgba(120, 70, 255, 0.12), transparent 35%),
+                #000000;
             color: white;
             font-family: Arial, Helvetica, sans-serif;
             overflow-x: hidden;
@@ -29,78 +29,26 @@
             align-items: center;
             text-align: center;
             padding: 40px 20px;
-            position: relative;
         }
 
-        .orb {
-            width: 190px;
-            height: 190px;
-            border-radius: 50%;
-            border: 3px solid rgba(80, 170, 255, 0.9);
-            box-shadow:
-                0 0 25px rgba(0, 132, 255, 0.9),
-                0 0 80px rgba(100, 80, 255, 0.45),
-                inset 0 0 30px rgba(0, 132, 255, 0.35);
-            margin-bottom: 45px;
-            position: relative;
-        }
-
-        .orb::before {
-            content: "";
-            position: absolute;
-            width: 120px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #28a8ff, transparent);
-            top: 50%;
-            left: -45px;
-            box-shadow: 0 0 18px #28a8ff;
-        }
-
-        .badge {
-            color: #4db8ff;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            font-size: 12px;
-            margin-bottom: 22px;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: clamp(3.2rem, 11vw, 8rem);
-            letter-spacing: 18px;
-            font-weight: 400;
-            text-transform: uppercase;
-            color: #f7fbff;
-            text-shadow:
-                0 0 18px rgba(255,255,255,0.25),
-                0 0 35px rgba(0,132,255,0.35);
-        }
-
-        .highlight {
-            color: #168dff;
-            text-shadow: 0 0 25px rgba(0,132,255,0.9);
-        }
-
-        .tagline {
-            margin-top: 28px;
-            letter-spacing: 9px;
-            text-transform: uppercase;
-            font-size: clamp(0.75rem, 2vw, 1rem);
-            background: linear-gradient(90deg, #159dff, #ffffff, #8c5cff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .logo {
+            width: min(92vw, 900px);
+            max-width: 900px;
+            filter: drop-shadow(0 0 30px rgba(0, 132, 255, 0.35));
+            margin-bottom: 35px;
         }
 
         .description {
             max-width: 760px;
-            margin: 35px auto 0;
             color: rgba(255,255,255,0.68);
             font-size: 1.05rem;
             line-height: 1.7;
+            margin-top: 10px;
+            letter-spacing: 1px;
         }
 
         .buttons {
-            margin-top: 40px;
+            margin-top: 38px;
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
@@ -108,16 +56,17 @@
         }
 
         .btn {
-            padding: 14px 28px;
+            padding: 14px 30px;
             border-radius: 999px;
             text-decoration: none;
-            font-size: 14px;
-            letter-spacing: 1px;
+            font-size: 13px;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            transition: 0.3s ease;
         }
 
         .primary {
-            background: linear-gradient(90deg, #168dff, #7b5cff);
+            background: linear-gradient(90deg, #168dff, #805cff);
             color: white;
             box-shadow: 0 0 25px rgba(0, 132, 255, 0.45);
         }
@@ -128,26 +77,32 @@
             background: rgba(255,255,255,0.04);
         }
 
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(0, 132, 255, 0.55);
+        }
+
         .footer {
             position: fixed;
             bottom: 24px;
-            color: rgba(255,255,255,0.38);
-            font-size: 13px;
-            letter-spacing: 2px;
+            color: rgba(255,255,255,0.35);
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
         @media (max-width: 600px) {
-            h1 {
-                letter-spacing: 8px;
+            .logo {
+                width: 100%;
             }
 
-            .tagline {
-                letter-spacing: 4px;
+            .description {
+                font-size: 0.95rem;
             }
 
-            .orb {
-                width: 140px;
-                height: 140px;
+            .footer {
+                position: static;
+                margin-top: 50px;
             }
         }
     </style>
@@ -155,19 +110,12 @@
 
 <body>
     <main class="page">
-        <div class="orb"></div>
 
-        <div class="badge">AI • Neural Technology • Human Evolution</div>
-
-        <h1>EVOLY<span class="highlight">Q</span>ON</h1>
-
-        <div class="tagline">
-            Evolving Intelligence. Elevating Humanity.
-        </div>
+        <img src="logo.png" alt="Evolyqon Logo" class="logo">
 
         <p class="description">
-            Evolyqon is building intelligent technology for the next era of human progress —
-            combining artificial intelligence, neural systems, productivity, and future-focused innovation.
+            Building intelligent technology for the next era of human progress —
+            combining artificial intelligence, neural systems, and future-focused innovation.
         </p>
 
         <div class="buttons">
@@ -176,8 +124,9 @@
         </div>
 
         <div class="footer">
-            © 2026 EVOLYQON
+            © 2026 Evolyqon
         </div>
+
     </main>
 </body>
 </html>
