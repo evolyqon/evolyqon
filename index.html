@@ -9,187 +9,316 @@
             box-sizing: border-box;
         }
 
-        html, body {
-            margin: 0;
-            min-height: 100%;
-            background: #000;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 50% 8%, rgba(0, 132, 255, 0.22), transparent 28%),
+                radial-gradient(circle at 80% 40%, rgba(124, 92, 255, 0.13), transparent 30%),
+                radial-gradient(circle at 20% 70%, rgba(0, 210, 255, 0.08), transparent 28%),
+                linear-gradient(180deg, #020814 0%, #000000 55%, #02030a 100%);
             color: white;
             font-family: Arial, Helvetica, sans-serif;
             overflow-x: hidden;
-            background:
-                radial-gradient(circle at 50% 18%, rgba(0, 132, 255, 0.22), transparent 30%),
-                radial-gradient(circle at 50% 52%, rgba(120, 70, 255, 0.13), transparent 35%),
-                linear-gradient(180deg, #020814 0%, #000000 68%);
         }
 
         .page {
+            width: 100%;
+        }
+
+        .hero {
             min-height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: clamp(36px, 6vw, 80px) 22px;
+            padding: clamp(40px, 6vw, 90px) 22px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 720px;
+            height: 720px;
+            border-radius: 50%;
+            border: 1px solid rgba(80, 170, 255, 0.08);
+            box-shadow:
+                0 0 80px rgba(0, 132, 255, 0.08),
+                inset 0 0 80px rgba(120, 90, 255, 0.05);
+            pointer-events: none;
         }
 
         .content {
             width: 100%;
             max-width: 1100px;
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
-            width: clamp(320px, 72vw, 920px);
+            width: clamp(300px, 68vw, 820px);
             max-width: 100%;
             display: block;
-            margin: 0 auto clamp(18px, 3vw, 32px);
+            margin: 0 auto 18px;
             filter:
-                drop-shadow(0 0 25px rgba(0, 132, 255, 0.35))
+                drop-shadow(0 0 26px rgba(0, 132, 255, 0.35))
                 drop-shadow(0 0 55px rgba(115, 70, 255, 0.22));
         }
 
-        .divider {
-            width: clamp(260px, 48vw, 520px);
-            height: 1px;
-            margin: clamp(12px, 2vw, 24px) auto clamp(22px, 3vw, 32px);
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(0, 160, 255, 0.65),
-                rgba(140, 80, 255, 0.55),
-                transparent
-            );
-            box-shadow: 0 0 18px rgba(0, 132, 255, 0.45);
-        }
-
-        .system-line {
-            color: rgba(255, 255, 255, 0.78);
-            font-size: clamp(11px, 1.3vw, 14px);
+        .label {
+            margin: 20px auto 0;
+            color: #35aaff;
+            text-shadow: 0 0 18px rgba(0, 132, 255, 0.7);
+            font-size: clamp(11px, 1.2vw, 13px);
             letter-spacing: clamp(3px, 0.55vw, 7px);
             text-transform: uppercase;
-            line-height: 2;
-            max-width: 850px;
-            margin: 0 auto;
         }
 
-        .system-line span {
-            color: #2aa8ff;
-            text-shadow: 0 0 16px rgba(0, 132, 255, 0.8);
+        .headline {
+            margin: 26px auto 0;
+            max-width: 850px;
+            font-size: clamp(28px, 5vw, 64px);
+            line-height: 1.05;
+            font-weight: 400;
+            letter-spacing: -1px;
+        }
+
+        .headline span {
+            background: linear-gradient(90deg, #ffffff, #42b6ff, #8d6cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .mission {
-            margin: clamp(20px, 3vw, 30px) auto 0;
-            max-width: 680px;
-            color: rgba(255, 255, 255, 0.56);
-            font-size: clamp(14px, 1.6vw, 17px);
+            margin: 26px auto 0;
+            max-width: 720px;
+            color: rgba(255, 255, 255, 0.62);
+            font-size: clamp(15px, 1.7vw, 18px);
             line-height: 1.8;
             font-weight: 300;
         }
 
-        .actions {
-            margin-top: clamp(30px, 4vw, 42px);
+        .waitlist-panel {
+            margin: 38px auto 0;
+            width: min(720px, 94vw);
+            padding: 24px;
+            border-radius: 28px;
+            border: 1px solid rgba(90, 170, 255, 0.22);
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.065), rgba(255,255,255,0.025)),
+                radial-gradient(circle at top, rgba(0,132,255,0.13), transparent 60%);
+            box-shadow:
+                0 0 42px rgba(0, 132, 255, 0.14),
+                inset 0 0 34px rgba(0, 132, 255, 0.06);
+            backdrop-filter: blur(14px);
+        }
+
+        .waitlist-label {
+            margin-bottom: 16px;
+            color: #35aaff;
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 16px rgba(0, 132, 255, 0.75);
+        }
+
+        .waitlist-form {
             display: flex;
+            gap: 12px;
             justify-content: center;
-            gap: 16px;
+            align-items: center;
             flex-wrap: wrap;
         }
 
-        .btn {
-            min-width: 180px;
-            padding: 15px 28px;
+        .waitlist-form input {
+            width: min(360px, 82vw);
+            padding: 17px 22px;
             border-radius: 999px;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 12px;
+            border: 1px solid rgba(90, 170, 255, 0.35);
+            background: rgba(0, 0, 0, 0.42);
             color: white;
+            outline: none;
+            font-size: 14px;
+            box-shadow:
+                inset 0 0 18px rgba(0, 132, 255, 0.10),
+                0 0 18px rgba(0, 132, 255, 0.08);
+        }
+
+        .waitlist-form input::placeholder {
+            color: rgba(255, 255, 255, 0.42);
+        }
+
+        .waitlist-form input:focus {
+            border-color: rgba(70, 180, 255, 0.8);
+            box-shadow:
+                0 0 24px rgba(0, 132, 255, 0.32),
+                inset 0 0 18px rgba(0, 132, 255, 0.12);
+        }
+
+        .waitlist-form button {
+            padding: 17px 30px;
+            border-radius: 999px;
+            border: none;
+            background: linear-gradient(90deg, #168dff, #755cff);
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            cursor: pointer;
+            box-shadow:
+                0 0 28px rgba(0, 132, 255, 0.5),
+                inset 0 0 14px rgba(255, 255, 255, 0.18);
             transition: 0.3s ease;
         }
 
-        .btn-primary {
-            background: linear-gradient(90deg, #168dff, #755cff);
-            box-shadow: 0 0 28px rgba(0, 132, 255, 0.5);
-        }
-
-        .btn-secondary {
-            border: 1px solid rgba(90, 170, 255, 0.35);
-            background: rgba(255, 255, 255, 0.035);
-            color: rgba(255,255,255,0.82);
-        }
-
-        .btn:hover {
+        .waitlist-form button:hover {
             transform: translateY(-2px);
             box-shadow:
-                0 0 30px rgba(0, 132, 255, 0.55),
-                0 0 60px rgba(115, 70, 255, 0.22);
+                0 0 36px rgba(0, 132, 255, 0.65),
+                0 0 70px rgba(117, 92, 255, 0.28);
+        }
+
+        .waitlist-note {
+            max-width: 560px;
+            margin: 18px auto 0;
+            color: rgba(255,255,255,0.48);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .actions {
+            margin-top: 18px;
+        }
+
+        .contact {
+            color: rgba(255,255,255,0.46);
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .contact:hover {
+            color: #35aaff;
+            text-shadow: 0 0 16px rgba(0,132,255,0.65);
+        }
+
+        .features {
+            padding: 20px 22px 90px;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            border: 1px solid rgba(90, 170, 255, 0.18);
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018));
+            border-radius: 28px;
+            padding: 30px;
+            min-height: 210px;
+            box-shadow:
+                inset 0 0 30px rgba(0, 132, 255, 0.045),
+                0 0 40px rgba(0,0,0,0.35);
+        }
+
+        .card .number {
+            color: #2aa8ff;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 400;
+        }
+
+        .card p {
+            margin: 16px 0 0;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.7;
+            font-size: 15px;
         }
 
         .footer {
-            margin-top: clamp(38px, 5vw, 56px);
-            color: rgba(255, 255, 255, 0.28);
+            text-align: center;
+            padding: 0 20px 34px;
+            color: rgba(255,255,255,0.25);
             font-size: 11px;
             letter-spacing: 4px;
             text-transform: uppercase;
         }
 
-        /* Tablet */
         @media (max-width: 900px) {
-            .logo {
-                width: 88vw;
+            .features {
+                grid-template-columns: 1fr;
+                max-width: 650px;
             }
 
-            .content {
-                max-width: 760px;
+            .hero {
+                min-height: auto;
+                padding-top: 58px;
+                padding-bottom: 52px;
+            }
+
+            .logo {
+                width: 92vw;
             }
         }
 
-        /* Phone */
         @media (max-width: 600px) {
-            .page {
-                align-items: flex-start;
-                padding-top: 58px;
-                padding-bottom: 44px;
+            .hero {
+                padding-top: 46px;
             }
 
             .logo {
-                width: 105vw;
+                width: 110vw;
                 max-width: none;
                 margin-left: 50%;
                 transform: translateX(-50%);
             }
 
-            .system-line {
-                max-width: 92%;
-                line-height: 2.15;
+            .headline {
+                font-size: 32px;
             }
 
-            .mission {
-                max-width: 92%;
+            .waitlist-panel {
+                padding: 20px 16px;
+                border-radius: 24px;
             }
 
-            .actions {
-                gap: 14px;
+            .waitlist-label {
+                letter-spacing: 3px;
             }
 
-            .btn {
+            .waitlist-form {
                 width: 100%;
-                max-width: 280px;
-            }
-        }
-
-        /* Small phone */
-        @media (max-width: 390px) {
-            .page {
-                padding-top: 46px;
             }
 
-            .logo {
-                width: 112vw;
+            .waitlist-form input,
+            .waitlist-form button {
+                width: 100%;
+                max-width: 310px;
             }
 
-            .btn {
-                max-width: 260px;
+            .waitlist-note {
+                font-size: 12px;
+                max-width: 92%;
+            }
+
+            .card {
+                padding: 26px;
+                border-radius: 24px;
             }
         }
     </style>
@@ -197,37 +326,78 @@
 
 <body>
     <main class="page">
-        <section class="content">
 
-            <img src="evolyqon_full_logo_transparent_4x.png" alt="Evolyqon Logo" class="logo">
+        <section class="hero">
+            <div class="content">
 
-            <div class="divider"></div>
+                <img src="evolyqon_full_logo_transparent_4x.png" alt="Evolyqon Logo" class="logo">
 
-            <div class="system-line">
-                <span>Neural AI</span> • Human Evolution • Future Technology
+                <div class="label">Neural AI • Human Evolution • Future Technology</div>
+
+                <h1 class="headline">
+                    The future of human intelligence, <span>powered by AI.</span>
+                </h1>
+
+                <p class="mission">
+                    Evolyqon is building a future-focused intelligence platform designed to help people
+                    organize life, learn faster, think clearly, and evolve through advanced artificial intelligence.
+                </p>
+
+                <div class="waitlist-panel">
+                    <div class="waitlist-label">Early Access Portal</div>
+
+                    <form action="https://formspree.io/f/mjgdqaae" method="POST" class="waitlist-form">
+                        <input type="email" name="email" placeholder="Enter your email for early access" required>
+                        <button type="submit">Join Waitlist</button>
+                    </form>
+
+                    <p class="waitlist-note">
+                        Be among the first to experience Evolyqon — an AI system built for intelligence, organization, and human evolution.
+                    </p>
+                </div>
+
+                <div class="actions">
+                    <a href="mailto:evolyqon@gmail.com" class="contact">Contact Evolyqon</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="features">
+
+            <div class="card">
+                <div class="number">01 / Intelligence</div>
+                <h3>AI Life System</h3>
+                <p>
+                    A personal AI layer designed to help users manage tasks, goals, documents,
+                    learning, and daily decisions in one intelligent place.
+                </p>
             </div>
 
-            <p class="mission">
-                A future-focused intelligence platform designed to help people think, organize,
-                learn, and evolve through advanced artificial intelligence.
-            </p>
+            <div class="card">
+                <div class="number">02 / Evolution</div>
+                <h3>Human Growth</h3>
+                <p>
+                    Technology built around human progress — helping people become more organized,
+                    more capable, and more prepared for the future.
+                </p>
+            </div>
 
-            <div class="waitlist">
-    <form action="https://formspree.io/f/mjgdqaae" method="POST">
-        <input type="email" name="email" placeholder="Enter your email" required>
-        <button type="submit">Join Waitlist</button>
-    </form>
-</div>
-
-<div class="actions">
-    <a href="mailto:evolyqon@gmail.com" class="btn btn-secondary">Contact</a>
-</div>
-
-            <div class="footer">
-                © 2026 Evolyqon
+            <div class="card">
+                <div class="number">03 / Future</div>
+                <h3>Neural Technology</h3>
+                <p>
+                    Inspired by neural systems, intelligent automation, and the next generation
+                    of AI-powered digital experiences.
+                </p>
             </div>
 
         </section>
+
+        <div class="footer">
+            © 2026 Evolyqon
+        </div>
+
     </main>
 </body>
 </html>
