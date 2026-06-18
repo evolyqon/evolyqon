@@ -72,22 +72,17 @@
             animation: lineFlow 1.6s ease forwards;
         }
 
-        .intro-name {
-            font-size: clamp(32px, 8vw, 74px);
-            letter-spacing: clamp(8px, 2vw, 20px);
-            font-weight: 400;
-            text-transform: uppercase;
-            color: white;
+        .intro-wordmark {
+            width: min(520px, 86vw);
+            display: block;
+            margin: 0 auto;
             opacity: 0;
-            transform: translateY(12px);
-            animation: nameReveal 1s ease forwards;
+            transform: translateY(12px) scale(0.96);
+            animation: wordmarkReveal 1s ease forwards;
             animation-delay: 0.75s;
-            text-shadow: 0 0 18px rgba(0,132,255,0.35);
-        }
-
-        .intro-name span {
-            color: #168dff;
-            text-shadow: 0 0 22px rgba(0,132,255,0.85);
+            filter:
+                drop-shadow(0 0 12px rgba(255,255,255,0.18))
+                drop-shadow(0 0 22px rgba(0,132,255,0.28));
         }
 
         .intro-sub {
@@ -150,6 +145,13 @@
             }
         }
 
+        @keyframes wordmarkReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
         @keyframes nameReveal {
             to {
                 opacity: 1;
@@ -208,20 +210,20 @@
 
         .content {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1200px;
             position: relative;
             z-index: 1;
         }
 
         .logo {
-            width: clamp(300px, 64vw, 780px);
+            width: clamp(360px, 78vw, 980px);
             max-width: 100%;
             display: block;
             margin: 0 auto 18px;
             image-rendering: auto;
             filter:
-                drop-shadow(0 0 14px rgba(0, 132, 255, 0.28))
-                drop-shadow(0 0 26px rgba(115, 70, 255, 0.12));
+                drop-shadow(0 0 12px rgba(0, 132, 255, 0.22))
+                drop-shadow(0 0 22px rgba(115, 70, 255, 0.10));
             animation: heroFloat 6s ease-in-out infinite;
         }
 
@@ -585,7 +587,7 @@
             }
 
             .logo {
-                width: 88vw;
+                width: 94vw;
             }
         }
 
@@ -593,6 +595,10 @@
             .intro-mark {
                 width: 100px;
                 height: 100px;
+            }
+
+            .intro-wordmark {
+                width: 88vw;
             }
 
             .intro-sub {
@@ -608,7 +614,7 @@
             }
 
             .hero {
-                padding: 34px 18px 44px;
+                padding: 34px 16px 44px;
             }
 
             .hero::before {
@@ -618,12 +624,14 @@
             }
 
             .logo {
-                width: 92vw;
-                max-width: 400px;
+                width: 108vw;
+                max-width: 560px;
+                margin-left: 50%;
+                transform: translateX(-50%);
                 margin-bottom: 12px;
                 filter:
-                    drop-shadow(0 0 10px rgba(0, 132, 255, 0.24))
-                    drop-shadow(0 0 18px rgba(115, 70, 255, 0.10));
+                    drop-shadow(0 0 8px rgba(0, 132, 255, 0.20))
+                    drop-shadow(0 0 14px rgba(115, 70, 255, 0.08));
             }
 
             .label {
@@ -703,8 +711,8 @@
 
         @media (max-width: 390px) {
             .logo {
-                width: 92vw;
-                max-width: 360px;
+                width: 110vw;
+                max-width: 520px;
             }
 
             .headline {
@@ -723,8 +731,8 @@
     <div class="intro">
         <div class="intro-content">
             <div class="intro-mark"></div>
-            <div class="intro-name">EVOLY<span>Q</span>ON</div>
-            <div class="intro-sub">Evolving Intelligence</div>
+            <img src="evolyqon_wordmark_only_transparent_4x.png" alt="Evolyqon" class="intro-wordmark">
+            <div class="intro-sub">Evolving Intelligence. Elevating Humanity.</div>
         </div>
     </div>
 
