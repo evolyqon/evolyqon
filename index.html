@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Evolyqon | AI Life System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Evolyqon is a future-focused AI life system for organization, learning, goals, documents, and human evolution.">
@@ -1193,6 +1194,17 @@
     </main>
 
     <script>
+        if ("scrollRestoration" in history) {
+            history.scrollRestoration = "manual";
+        }
+
+        window.addEventListener("load", function () {
+            setTimeout(function () {
+                window.scrollTo(0, 0);
+                history.replaceState(null, "", window.location.pathname);
+            }, 0);
+        });
+
         const form = document.getElementById("waitlistForm");
         const successMessage = document.getElementById("successMessage");
         const waitlistButton = document.getElementById("waitlistButton");
@@ -1239,6 +1251,8 @@
                         behavior: "smooth",
                         block: "start"
                     });
+
+                    history.replaceState(null, "", window.location.pathname);
                 }
             });
         });
