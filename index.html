@@ -26,130 +26,66 @@
             overflow-x: hidden;
         }
 
+        /* INTRO */
         .intro {
             position: fixed;
             inset: 0;
             z-index: 9999;
             background:
-                radial-gradient(circle at center, rgba(0, 132, 255, 0.14), transparent 32%),
+                radial-gradient(circle at center, rgba(0, 132, 255, 0.18), transparent 34%),
                 radial-gradient(circle at center, rgba(124, 92, 255, 0.10), transparent 48%),
                 #000000;
             display: flex;
             justify-content: center;
             align-items: center;
             animation: introExit 0.9s ease forwards;
-            animation-delay: 3s;
+            animation-delay: 2.7s;
         }
 
         .intro-content {
-            text-align: center;
-            width: min(720px, 92vw);
-        }
-
-        .intro-build {
             position: relative;
-            width: min(320px, 62vw);
-            aspect-ratio: 1 / 1;
-            margin: 0 auto 26px;
+            width: min(900px, 92vw);
+            text-align: center;
         }
 
-        .intro-glow {
-            position: absolute;
-            inset: 4%;
-            border-radius: 50%;
-            background:
-                radial-gradient(circle, rgba(0,132,255,0.28), rgba(124,92,255,0.12), transparent 68%);
-            filter: blur(18px);
-            opacity: 0;
-            transform: scale(0.72);
-            animation: glowBuild 1.2s ease forwards;
-        }
-
-        .neural-lines {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-            z-index: 3;
-        }
-
-        .neural-lines path {
-            fill: none;
-            stroke: rgba(70, 190, 255, 0.95);
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-dasharray: 420;
-            stroke-dashoffset: 420;
-            filter: drop-shadow(0 0 8px rgba(0,132,255,0.9));
-            animation: drawLine 1.35s ease forwards;
-        }
-
-        .neural-lines circle {
-            fill: #45c7ff;
-            opacity: 0;
-            filter: drop-shadow(0 0 8px rgba(0,132,255,1));
-            animation: nodeAppear 0.5s ease forwards;
-            animation-delay: 0.95s;
-        }
-
-        .intro-mask {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
+        .intro-logo-wrap {
+            position: relative;
             overflow: hidden;
-            clip-path: inset(0 100% 0 0);
-            animation: revealIcon 1.55s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.45s;
+            padding: 20px;
         }
 
-        .intro-icon {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+        .intro-logo {
+            width: min(780px, 90vw);
+            display: block;
+            margin: 0 auto;
             opacity: 0;
+            transform: scale(0.94);
             filter:
-                blur(10px)
+                blur(14px)
                 brightness(1.25)
-                drop-shadow(0 0 22px rgba(0,132,255,0.55));
-            animation: sharpenIcon 1.45s ease forwards 0.55s;
+                drop-shadow(0 0 26px rgba(0,132,255,0.45));
+            animation: logoBuild 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
-        .intro-sweep {
+        .intro-logo-wrap::after {
+            content: "";
             position: absolute;
-            top: 12%;
-            bottom: 12%;
-            left: -40%;
-            width: 42%;
-            z-index: 4;
+            top: 8%;
+            bottom: 8%;
+            left: -45%;
+            width: 38%;
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(90, 200, 255, 0.75),
-                rgba(140, 100, 255, 0.35),
+                rgba(90, 200, 255, 0.85),
+                rgba(150, 100, 255, 0.45),
                 transparent
             );
-            filter: blur(10px);
-            transform: skewX(-18deg) translateX(-120%);
+            filter: blur(12px);
+            transform: skewX(-18deg);
             opacity: 0;
-            animation: sweepAcross 1.2s ease forwards 0.55s;
+            animation: cleanSweep 1.25s ease forwards 0.45s;
             pointer-events: none;
-        }
-
-        .intro-name {
-            font-size: clamp(30px, 7vw, 64px);
-            letter-spacing: clamp(8px, 2vw, 18px);
-            font-weight: 400;
-            text-transform: uppercase;
-            color: white;
-            opacity: 0;
-            transform: translateY(12px);
-            animation: introTextReveal 0.9s ease forwards 1.45s;
-            text-shadow: 0 0 18px rgba(0,132,255,0.35);
-        }
-
-        .intro-name span {
-            color: #168dff;
-            text-shadow: 0 0 22px rgba(0,132,255,0.85);
         }
 
         .intro-sub {
@@ -160,66 +96,43 @@
             text-transform: uppercase;
             opacity: 0;
             transform: translateY(10px);
-            animation: introTextReveal 0.8s ease forwards 1.8s;
+            animation: introSubReveal 0.8s ease forwards 1.45s;
         }
 
-        @keyframes glowBuild {
+        @keyframes logoBuild {
             0% {
                 opacity: 0;
-                transform: scale(0.65);
+                transform: scale(0.9);
+                clip-path: inset(0 100% 0 0);
+                filter:
+                    blur(18px)
+                    brightness(1.4)
+                    drop-shadow(0 0 35px rgba(0,132,255,0.65));
+            }
+            45% {
+                opacity: 1;
+                transform: scale(1.01);
+                clip-path: inset(0 30% 0 0);
+                filter:
+                    blur(6px)
+                    brightness(1.2)
+                    drop-shadow(0 0 26px rgba(0,132,255,0.45));
             }
             100% {
                 opacity: 1;
                 transform: scale(1);
-            }
-        }
-
-        @keyframes drawLine {
-            to {
-                stroke-dashoffset: 0;
-            }
-        }
-
-        @keyframes nodeAppear {
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes revealIcon {
-            to {
                 clip-path: inset(0 0 0 0);
-            }
-        }
-
-        @keyframes sharpenIcon {
-            0% {
-                opacity: 0;
-                filter:
-                    blur(14px)
-                    brightness(1.35)
-                    drop-shadow(0 0 28px rgba(0,132,255,0.75));
-            }
-            55% {
-                opacity: 1;
-                filter:
-                    blur(4px)
-                    brightness(1.18)
-                    drop-shadow(0 0 22px rgba(0,132,255,0.55));
-            }
-            100% {
-                opacity: 1;
                 filter:
                     blur(0)
                     brightness(1)
-                    drop-shadow(0 0 12px rgba(0,132,255,0.28));
+                    drop-shadow(0 0 12px rgba(0,132,255,0.18));
             }
         }
 
-        @keyframes sweepAcross {
+        @keyframes cleanSweep {
             0% {
                 opacity: 0;
-                transform: skewX(-18deg) translateX(-120%);
+                transform: skewX(-18deg) translateX(0);
             }
             20% {
                 opacity: 1;
@@ -230,7 +143,7 @@
             }
         }
 
-        @keyframes introTextReveal {
+        @keyframes introSubReveal {
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -245,12 +158,13 @@
             }
         }
 
+        /* MAIN PAGE */
         .page {
             width: 100%;
             overflow-x: hidden;
             opacity: 0;
             animation: pageReveal 1s ease forwards;
-            animation-delay: 3.05s;
+            animation-delay: 2.75s;
         }
 
         @keyframes pageReveal {
@@ -286,10 +200,10 @@
         @keyframes slowOrbit {
             0%, 100% {
                 transform: scale(1);
-                opacity: 0.8;
+                opacity: 0.75;
             }
             50% {
-                transform: scale(1.05);
+                transform: scale(1.04);
                 opacity: 1;
             }
         }
@@ -306,10 +220,9 @@
             max-width: 100%;
             display: block;
             margin: 0 auto 18px;
-            image-rendering: auto;
             filter:
-                drop-shadow(0 0 10px rgba(0, 132, 255, 0.20))
-                drop-shadow(0 0 18px rgba(115, 70, 255, 0.08));
+                drop-shadow(0 0 8px rgba(0, 132, 255, 0.16))
+                drop-shadow(0 0 14px rgba(115, 70, 255, 0.08));
         }
 
         .label {
@@ -321,7 +234,7 @@
             text-transform: uppercase;
             line-height: 1.8;
             animation: fadeUp 0.9s ease forwards;
-            animation-delay: 3.3s;
+            animation-delay: 3s;
             opacity: 0;
         }
 
@@ -333,7 +246,7 @@
             font-weight: 400;
             letter-spacing: -1px;
             animation: fadeUp 0.9s ease forwards;
-            animation-delay: 3.45s;
+            animation-delay: 3.15s;
             opacity: 0;
         }
 
@@ -351,7 +264,7 @@
             line-height: 1.8;
             font-weight: 300;
             animation: fadeUp 0.9s ease forwards;
-            animation-delay: 3.6s;
+            animation-delay: 3.3s;
             opacity: 0;
         }
 
@@ -380,7 +293,7 @@
                 inset 0 0 28px rgba(0, 132, 255, 0.05);
             backdrop-filter: blur(14px);
             animation: panelReveal 0.9s ease forwards, panelFloat 7s ease-in-out infinite;
-            animation-delay: 3.75s, 4.7s;
+            animation-delay: 3.45s, 4.4s;
             opacity: 0;
         }
 
@@ -482,7 +395,7 @@
             display: flex;
             justify-content: center;
             animation: fadeUp 0.9s ease forwards;
-            animation-delay: 3.9s;
+            animation-delay: 3.6s;
             opacity: 0;
         }
 
@@ -590,15 +503,15 @@
         }
 
         .card:nth-child(1) {
-            animation-delay: 4.1s;
+            animation-delay: 3.8s;
         }
 
         .card:nth-child(2) {
-            animation-delay: 4.25s;
+            animation-delay: 3.95s;
         }
 
         .card:nth-child(3) {
-            animation-delay: 4.4s;
+            animation-delay: 4.1s;
         }
 
         @keyframes cardReveal {
@@ -668,14 +581,11 @@
         }
 
         @media (max-width: 600px) {
-            .intro-build {
-                width: min(250px, 66vw);
-                margin-bottom: 20px;
-            }
-
-            .intro-name {
-                font-size: 30px;
-                letter-spacing: 8px;
+            .intro-logo {
+                width: 100vw;
+                max-width: 540px;
+                margin-left: 50%;
+                transform: translateX(-50%);
             }
 
             .intro-sub {
@@ -709,8 +619,8 @@
                 transform: translateX(-50%);
                 margin-bottom: 12px;
                 filter:
-                    drop-shadow(0 0 8px rgba(0, 132, 255, 0.20))
-                    drop-shadow(0 0 14px rgba(115, 70, 255, 0.08));
+                    drop-shadow(0 0 6px rgba(0, 132, 255, 0.16))
+                    drop-shadow(0 0 10px rgba(115, 70, 255, 0.06));
             }
 
             .label {
@@ -809,33 +719,13 @@
 
     <div class="intro">
         <div class="intro-content">
-
-            <div class="intro-build">
-                <div class="intro-glow"></div>
-
-                <svg class="neural-lines" viewBox="0 0 400 400">
-                    <path d="M70 200 C120 120, 170 120, 210 195" />
-                    <path d="M70 200 C130 170, 170 170, 220 205" />
-                    <path d="M70 200 C120 270, 170 270, 210 215" />
-                    <path d="M105 145 L155 185 L105 250" />
-                    <path d="M95 200 L160 200 L230 200" />
-                    <circle cx="70" cy="200" r="5" />
-                    <circle cx="105" cy="145" r="5" />
-                    <circle cx="105" cy="250" r="5" />
-                    <circle cx="155" cy="185" r="5" />
-                    <circle cx="160" cy="200" r="5" />
-                </svg>
-
-                <div class="intro-mask">
-                    <img src="evolyqon_icon_only_transparent_4x.png" alt="Evolyqon Icon" class="intro-icon">
-                </div>
-
-                <div class="intro-sweep"></div>
+            <div class="intro-logo-wrap">
+                <img src="evolyqon_full_logo_transparent_4x.png" alt="Evolyqon Logo" class="intro-logo">
             </div>
 
-            <div class="intro-name">EVOLY<span>Q</span>ON</div>
-            <div class="intro-sub">Evolving Intelligence. Elevating Humanity.</div>
-
+            <div class="intro-sub">
+                Evolving Intelligence. Elevating Humanity.
+            </div>
         </div>
     </div>
 
