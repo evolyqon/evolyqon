@@ -26,13 +26,15 @@
             overflow-x: hidden;
         }
 
-        a {
-            color: inherit;
-        }
-
         .page {
             width: 100%;
             overflow-x: hidden;
+        }
+
+        .hero,
+        .section,
+        .waitlist-section {
+            scroll-margin-top: 95px;
         }
 
         .navbar {
@@ -59,7 +61,10 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            text-decoration: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
         }
 
         .nav-logo {
@@ -86,12 +91,19 @@
             text-transform: uppercase;
         }
 
-        .nav-links a {
-            text-decoration: none;
+        .nav-button {
+            border: none;
+            background: transparent;
+            color: rgba(255,255,255,0.55);
+            font: inherit;
+            letter-spacing: inherit;
+            text-transform: inherit;
+            cursor: pointer;
+            padding: 8px 0;
             transition: 0.25s ease;
         }
 
-        .nav-links a:hover {
+        .nav-button:hover {
             color: #35aaff;
             text-shadow: 0 0 12px rgba(0,132,255,0.65);
         }
@@ -101,7 +113,7 @@
             border-radius: 999px;
             border: 1px solid rgba(90, 170, 255, 0.3);
             background: rgba(255,255,255,0.045);
-            color: white !important;
+            color: white;
             box-shadow: inset 0 0 14px rgba(0,132,255,0.06);
         }
 
@@ -218,16 +230,18 @@
 
         .primary-btn,
         .secondary-btn {
+            border: none;
+            cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             min-height: 50px;
             padding: 15px 24px;
             border-radius: 999px;
-            text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 3px;
             font-size: 12px;
+            color: white;
             transition: 0.3s ease;
         }
 
@@ -300,6 +314,63 @@
             line-height: 1.8;
         }
 
+        .help-grid,
+        .feature-grid {
+            margin-top: 42px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .help-card,
+        .feature-card,
+        .audience-card {
+            border: 1px solid rgba(90, 170, 255, 0.18);
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018));
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow:
+                inset 0 0 26px rgba(0, 132, 255, 0.04),
+                0 0 36px rgba(0,0,0,0.32);
+            transition: 0.35s ease;
+        }
+
+        .help-card:hover,
+        .feature-card:hover,
+        .audience-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(90, 170, 255, 0.34);
+            box-shadow:
+                0 0 34px rgba(0,132,255,0.12),
+                inset 0 0 30px rgba(0,132,255,0.06);
+        }
+
+        .number {
+            color: #2aa8ff;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .help-card h3,
+        .feature-card h3,
+        .audience-card h3 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 400;
+        }
+
+        .help-card p,
+        .feature-card p,
+        .audience-card p {
+            margin: 16px 0 0;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
         .product-preview {
             margin-top: 42px;
             border-radius: 34px;
@@ -333,7 +404,8 @@
             color: rgba(255,255,255,0.72);
         }
 
-        .status-dot {
+        .status-dot,
+        .contact-dot {
             width: 8px;
             height: 8px;
             border-radius: 50%;
@@ -462,69 +534,6 @@
             border-radius: 999px;
             background: linear-gradient(90deg, #168dff, #755cff);
             box-shadow: 0 0 16px rgba(0,132,255,0.45);
-        }
-
-        .help-grid {
-            margin-top: 42px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-
-        .help-card,
-        .feature-card,
-        .audience-card {
-            border: 1px solid rgba(90, 170, 255, 0.18);
-            background:
-                linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018));
-            border-radius: 28px;
-            padding: 28px;
-            box-shadow:
-                inset 0 0 26px rgba(0, 132, 255, 0.04),
-                0 0 36px rgba(0,0,0,0.32);
-            transition: 0.35s ease;
-        }
-
-        .help-card:hover,
-        .feature-card:hover,
-        .audience-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(90, 170, 255, 0.34);
-            box-shadow:
-                0 0 34px rgba(0,132,255,0.12),
-                inset 0 0 30px rgba(0,132,255,0.06);
-        }
-
-        .number {
-            color: #2aa8ff;
-            font-size: 12px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-        }
-
-        .help-card h3,
-        .feature-card h3,
-        .audience-card h3 {
-            margin: 0;
-            font-size: 22px;
-            font-weight: 400;
-        }
-
-        .help-card p,
-        .feature-card p,
-        .audience-card p {
-            margin: 16px 0 0;
-            color: rgba(255,255,255,0.55);
-            line-height: 1.7;
-            font-size: 15px;
-        }
-
-        .feature-grid {
-            margin-top: 42px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
         }
 
         .audience-section {
@@ -662,18 +671,71 @@
                 0 0 60px rgba(117, 92, 255, 0.24);
         }
 
+        .waitlist-form button:disabled {
+            opacity: 0.75;
+            cursor: not-allowed;
+        }
+
         .success-message {
             display: none;
-            margin-top: 18px;
-            color: #35aaff;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 12px;
-            text-shadow: 0 0 14px rgba(0,132,255,0.7);
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            max-width: 540px;
+            margin: 22px auto 0;
+            padding: 16px 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(53, 170, 255, 0.35);
+            background:
+                linear-gradient(180deg, rgba(53,170,255,0.12), rgba(255,255,255,0.035));
+            box-shadow:
+                0 0 24px rgba(0,132,255,0.16),
+                inset 0 0 18px rgba(0,132,255,0.05);
+            color: white;
+            text-align: left;
         }
 
         .success-message.show {
+            display: flex;
+            animation: successPop 0.45s ease forwards;
+        }
+
+        .success-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #168dff, #755cff);
+            box-shadow: 0 0 18px rgba(0,132,255,0.45);
+            flex: 0 0 auto;
+        }
+
+        .success-message strong {
             display: block;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .success-message small {
+            display: block;
+            margin-top: 4px;
+            color: rgba(255,255,255,0.58);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        @keyframes successPop {
+            from {
+                opacity: 0;
+                transform: translateY(12px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .contact-row {
@@ -711,15 +773,6 @@
             box-shadow:
                 0 0 24px rgba(0,132,255,0.24),
                 0 0 45px rgba(115,70,255,0.14);
-        }
-
-        .contact-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #35aaff;
-            box-shadow: 0 0 12px rgba(0,132,255,0.85);
-            animation: pulseDot 2s infinite;
         }
 
         .footer {
@@ -845,6 +898,10 @@
                 max-width: 330px;
             }
 
+            .success-message {
+                align-items: flex-start;
+            }
+
             .contact-pill {
                 letter-spacing: 2px;
                 font-size: 10px;
@@ -864,16 +921,16 @@
 
         <nav class="navbar">
             <div class="nav-inner">
-                <a href="#top" class="nav-brand">
+                <button type="button" class="nav-brand" data-scroll="top">
                     <img src="evolyqon_icon_only_transparent_4x.png" alt="Evolyqon" class="nav-logo">
                     <span class="nav-name">Evolyqon</span>
-                </a>
+                </button>
 
                 <div class="nav-links">
-                    <a href="#vision">Vision</a>
-                    <a href="#preview">Preview</a>
-                    <a href="#features">Features</a>
-                    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+                    <button type="button" class="nav-button" data-scroll="vision">Vision</button>
+                    <button type="button" class="nav-button" data-scroll="preview">Preview</button>
+                    <button type="button" class="nav-button" data-scroll="features">Features</button>
+                    <button type="button" class="nav-button nav-cta" data-scroll="waitlist">Join Waitlist</button>
                 </div>
             </div>
         </nav>
@@ -895,8 +952,8 @@
                 </p>
 
                 <div class="hero-buttons">
-                    <a href="#waitlist" class="primary-btn">Join Early Access</a>
-                    <a href="#preview" class="secondary-btn">See The Vision</a>
+                    <button type="button" class="primary-btn" data-scroll="waitlist">Join Early Access</button>
+                    <button type="button" class="secondary-btn" data-scroll="preview">See The Vision</button>
                 </div>
 
             </div>
@@ -1105,11 +1162,15 @@
 
                 <form id="waitlistForm" action="https://formspree.io/f/mjgdqaae" method="POST" class="waitlist-form">
                     <input type="email" name="email" placeholder="Enter your email for early access" required>
-                    <button type="submit">Join Waitlist</button>
+                    <button id="waitlistButton" type="submit">Join Waitlist</button>
                 </form>
 
                 <div id="successMessage" class="success-message">
-                    Access request received. Welcome to Evolyqon.
+                    <span class="success-icon">✓</span>
+                    <div>
+                        <strong>Request received</strong>
+                        <small>Welcome to Evolyqon. You are now on the early access list.</small>
+                    </div>
                 </div>
 
                 <div class="contact-row">
@@ -1134,9 +1195,13 @@
     <script>
         const form = document.getElementById("waitlistForm");
         const successMessage = document.getElementById("successMessage");
+        const waitlistButton = document.getElementById("waitlistButton");
 
         form.addEventListener("submit", async function (event) {
             event.preventDefault();
+
+            waitlistButton.textContent = "Joining...";
+            waitlistButton.disabled = true;
 
             const data = new FormData(form);
 
@@ -1151,16 +1216,31 @@
 
                 if (response.ok) {
                     form.reset();
-                    successMessage.textContent = "Access request received. Welcome to Evolyqon.";
                     successMessage.classList.add("show");
+                    waitlistButton.textContent = "Joined";
                 } else {
-                    successMessage.textContent = "Something went wrong. Please try again.";
-                    successMessage.classList.add("show");
+                    waitlistButton.textContent = "Try Again";
+                    waitlistButton.disabled = false;
+                    alert("Something went wrong. Please try again.");
                 }
             } catch (error) {
-                successMessage.textContent = "Something went wrong. Please try again.";
-                successMessage.classList.add("show");
+                waitlistButton.textContent = "Try Again";
+                waitlistButton.disabled = false;
+                alert("Something went wrong. Please try again.");
             }
+        });
+
+        document.querySelectorAll("[data-scroll]").forEach(function (button) {
+            button.addEventListener("click", function () {
+                const section = document.getElementById(button.dataset.scroll);
+
+                if (section) {
+                    section.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }
+            });
         });
     </script>
 
